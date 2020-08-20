@@ -50,7 +50,8 @@ def print_words(filename):
     """Prints one per line '<word> : <count>', sorted
     by word for the given file.
     """
-    print(txt)
+    for k, v in txt.items():
+        print("{k} : {v}".format(k=k, v=v))
     # Your code here
     return
 
@@ -58,7 +59,11 @@ def print_words(filename):
 def print_top(filename):
     """Prints the top count listing for the given file."""
     txt = create_word_dict(filename)
-    return txt
+    top_txt = sorted(txt.items(), key=lambda x: x[1], reverse=True)
+    top_txt = top_txt[:20]
+    for k, v in top_txt:
+        print("{k} : {v}".format(k=k, v=v))
+    return top_txt
 
 
 # This basic command line argument parsing code is provided and calls
